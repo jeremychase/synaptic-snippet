@@ -1,0 +1,28 @@
+openapi: 3.0.0
+tags:
+  - name: tweets 
+get:
+  description: Generate Tweets from RSS feed
+  parameters:
+  - in: query
+    name: feed_url
+    schema:
+      type: URL
+    description: The RSS feed to pull content from.
+    default: https://www.reutersagency.com/feed/?best-sectors=equities&post_type=best
+  - in: query
+    name: temperature
+    schema:
+      type: number
+    description: Governs randomness of generated tweets. 0.0 to 2.0, higher is more zany.
+    default: 0.7
+    minimum: 0.0
+    maximum: 2.0
+
+responses:
+    '200':
+      description: Successful response
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal Server Error

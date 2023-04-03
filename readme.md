@@ -26,3 +26,17 @@ Development is performed using [VSCode Development containers](https://code.visu
 
 1. Open in container
 1. Edit code
+1. Run flask:
+
+    ```
+    cd main
+    flask --app main:app run --debug
+    ```
+
+### requirements.txt
+
+Run:
+
+```
+pipreqs .
+```
