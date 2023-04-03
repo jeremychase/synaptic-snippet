@@ -6,18 +6,26 @@ get:
   parameters:
   - in: query
     name: feed_url
+    required: true
     schema:
       type: URL
     description: The RSS feed to pull content from.
     default: https://www.reutersagency.com/feed/?best-sectors=equities&post_type=best
   - in: query
     name: temperature
+    required: false
     schema:
       type: number
     description: Governs randomness of generated tweets. 0.0 to 2.0, higher is more zany.
     default: 0.7
     minimum: 0.0
     maximum: 2.0
+  - in: query
+    name: twitter_handle
+    required: false
+    schema:
+      type: string
+    description: Attempts to makes tweets in the same style as this this user.
 
 responses:
     '200':

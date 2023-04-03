@@ -96,13 +96,18 @@ def parse_tweets(input_str):
     return list(reversed(non_empty_lines))
 
 
-def generate_tweets(rss_data, temperature):
+def generate_tweets(rss_data, temperature, twitter_handle):
     input = [None] * len(rss_data)
     output = []
+    twitter_style = ""
+
+    if twitter_handle != None:
+        twitter_style = f", in the style of twitter user {twitter_handle}"
 
     for i in range(0, len(rss_data)):
-        input[i] = f"Generate three catchy tweets, one on each line, with no label, linking to {rss_data[i].link} near the end, based on:\n\n {remove_html_tags(rss_data[i].content[0].value)}"
+        input[i] = f"Generate three catchy tweets{twitter_style}, one on each line, with no label, linking to {rss_data[i].link} near the end, based on:\n\n {remove_html_tags(rss_data[i].content[0].value)}"
         input[i] = input[i][:4500] # TODO check on truncation
+
         output.append({
             "link": rss_data[i].link,
             "title": rss_data[i].title
@@ -162,6 +167,7 @@ def create_app(test_config=None):
     def tweets():
         feed_url = request.args.get("feed_url")
         temperature = request.args.get("temperature")
+        twitter_handle = request.args.get("twitter_handle")
         msg = None
 
         # vet temperature param
@@ -192,7 +198,7 @@ def create_app(test_config=None):
 
         rss_data = fetch_rss_data(feed_url)
 
-        tweets = generate_tweets(rss_data, temperature)
+        tweets = generate_tweets(rss_data, temperature, twitter_handle)
         
         response = make_response(
             jsonify(
