@@ -17,5 +17,12 @@ synaptic-snippet is a powerful and innovative tool that reads RSS feeds and gene
 Development is performed using [VSCode Development containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
 1. Install plugins
+1. Populate `.devcontainer/devcontainer.env`
+
+    ```
+    echo OPENAI_API_KEY=YOUR_KEY > .devcontainer/devcontainer.env
+
+    ```
+
 1. Open in container
 1. Edit code
