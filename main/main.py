@@ -27,7 +27,7 @@ swagger_template = dict(
 info = {
     'title': LazyString(lambda: 'Synaptic Snippet'),
     'version': LazyString(lambda: '0.1'),
-    'description': LazyString(lambda: 'An api for building tweets from an RSS feed using Langchain and OpenAI.'),
+    'description': LazyString(lambda: 'An <a href="https://github.com/jeremychase/synaptic-snippet">open source</a> api for building tweets from an RSS feed using Langchain and OpenAI.'),
     },
     host = LazyString(lambda: request.host)
 )
@@ -101,7 +101,7 @@ def generate_tweets(rss_data, temperature):
     output = []
 
     for i in range(0, len(rss_data)):
-        input[i] = f"Generate three tweets, one on each line, with no label, for:\n\n {remove_html_tags(rss_data[i].content[0].value)}"
+        input[i] = f"Generate three catchy tweets, one on each line, with no label, linking to {rss_data[i].link} near the end, based on:\n\n {remove_html_tags(rss_data[i].content[0].value)}"
         input[i] = input[i][:4500] # TODO check on truncation
         output.append({
             "link": rss_data[i].link,

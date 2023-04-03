@@ -1,7 +1,5 @@
 # synaptic-snippet
 
-![synaptic-snippet banner](https://www.example.com/images/synaptic-snippet-banner.png)
-
 synaptic-snippet is a powerful and innovative tool that reads RSS feeds and generates concise, engaging tweets based on the content. By leveraging GPT technology, synaptic-snippet creates coherent and relevant tweets, allowing you to share the latest news and updates with your audience in an easily digestible format.
 
 ## Features
